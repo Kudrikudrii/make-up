@@ -29,7 +29,7 @@ export default function CallToAction() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-3xl mx-auto text-center relative"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             <strong>Сотворим волшебство вместе</strong>

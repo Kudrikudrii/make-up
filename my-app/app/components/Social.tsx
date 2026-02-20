@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer'
 
 export default function Social() {
     const [ref, inView] = useInView({
@@ -44,7 +44,7 @@ export default function Social() {
 
                 <motion.div
                     ref={ref}
-                    className="flex flex-wrap justify-center gap-4"
+                    className="flex flex-wrap justify-center gap-4 relative"
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.5 }}
@@ -61,7 +61,7 @@ export default function Social() {
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             className={`w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:scale-110 hover:text-white`}
                         >
-                            <Image
+                            <ExportedImage
                                 src={social.icon}
                                 alt={social.name}
                                 fill

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer'
 import { motion } from 'framer-motion';
 import { imageVariants, gridVariants } from '../animations.config';
 import { ImageItem } from '../types';
@@ -42,7 +42,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, onImageClick }) => {
                             <div className="w-8 h-8 border-4 border-white/20 border-t-white rounded-full animate-spin" />
                         </div>
                     )}
-                    <Image
+                    <ExportedImage
                         src={image.thumbnail}
                         alt={image.alt}
                         fill

@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import Image from 'next/image'
+import ExportedImage from 'next-image-export-optimizer'
 
 export default function Hero() {
     const sectionRef = useRef(null);
@@ -20,7 +20,7 @@ export default function Hero() {
     return (
         <section 
             ref={sectionRef} 
-            className="relative h-screen flex items-end pb-20 overflow-hidden"
+            className="relative h-screen flex items-end pb-20 overflow-hidden relative"
         >
             <motion.div 
                 className="absolute inset-0 z-0"
@@ -35,12 +35,11 @@ export default function Hero() {
                         filter: `blur(${blur}px) brightness(${brightness})`,
                     }}
                 >
-                    <Image
+                    <ExportedImage
                         src='/images/IMG_2911.JPG'
                         alt='Evgenia Garankina makeup artist'
                         fill
                         className="object-cover"
-                        priority
                     />
                 </motion.div>
                 <motion.div 

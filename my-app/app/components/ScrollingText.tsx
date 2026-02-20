@@ -25,7 +25,7 @@ export default function ScrollingText() {
   const text = "Award-winning artist with a decade of experience. * Specializing in editorial and bridal looks. * "
 
   return (
-    <section className="bg-white overflow-hidden">
+    <section className="bg-white overflow-hidden relative">
       <div className="container-fluid px-0">
         <div
           ref={scrollRef}

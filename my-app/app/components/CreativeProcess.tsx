@@ -1,9 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { CREATIVE_PROCESS_IMAGES } from '@/app/utils/constants/data'
+import ExportedImage from 'next-image-export-optimizer'
+
 
 export default function CreativeProcess() {
   const [ref, inView] = useInView({
@@ -25,7 +26,7 @@ export default function CreativeProcess() {
           initial={{ x: -200, opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 relative"
         >
           {CREATIVE_PROCESS_IMAGES.map((src, index) => (
             <motion.div
@@ -35,7 +36,7 @@ export default function CreativeProcess() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="relative aspect-3/4 overflow-hidden rounded-2xl"
             >
-              <Image
+              <ExportedImage
                 src={src}
                 alt={`Creative Process ${index + 1}`}
                 fill

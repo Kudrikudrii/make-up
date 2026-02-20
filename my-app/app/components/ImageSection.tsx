@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import Image from 'next/image';
+import ExportedImage from 'next-image-export-optimizer'
 
 export default function ImageSection() {
     const sectionRef = useRef(null);
@@ -35,7 +35,7 @@ export default function ImageSection() {
                         filter: `blur(${blur}px) brightness(${brightness})`,
                     }}
                 >
-                    <Image
+                    <ExportedImage
                         src='/images/IMG_2910.JPG'
                         alt=''
                         fill
