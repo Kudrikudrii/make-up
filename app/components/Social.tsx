@@ -38,7 +38,7 @@ export default function Social() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-6">
                     <h2 className="text-2xl md:text-5xl font-bold text-black">
-                        <strong>Связаться со мной</strong>
+                        <strong>СВЯЗАТЬСЯ СО МНОЙ</strong>
                     </h2>
                 </div>
 
@@ -67,7 +67,6 @@ export default function Social() {
                                 fill
                                 sizes="64px"
                                 className="object-cover"
-                                priority
                             />
                         </motion.a>
                     ))}

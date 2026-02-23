@@ -15,9 +15,3 @@ export const NAV_LINKS = [
         ariaLabel: 'Вернуться на главную страницу',
     },
 ] as const;
-
-export const CONTACT_LINK = {
-    href: '#contact',
-    label: 'Contact',
-    ariaLabel: 'Связаться со мной',
-} as const;

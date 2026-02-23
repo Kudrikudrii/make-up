@@ -6,6 +6,7 @@ import ExportedImage from 'next-image-export-optimizer';
 import GallerySection from '../portfolio/components/GallerySection';
 import GalleryLightbox from '../portfolio/components/GalleryLightbox';
 import { useLightbox } from '@/app/utils/hooks/useLightbox';
+import Link from 'next/link';
 import {
     containerVariants,
     headerVariants,
@@ -34,12 +35,20 @@ const AboutPage = () => {
         lightbox.openLightbox(slides, index);
     };
 
+    const handleClick = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        link: string
+    ) => {
+        e.preventDefault();
+        window.open(link, '_blank', 'noopener,noreferrer');
+    };
+
     return (
         <motion.section
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="bg-black min-h-screen pt-24 pb-16"
+            className="bg-black min-h-screen pt-19 pb-4"
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
@@ -53,19 +62,13 @@ const AboutPage = () => {
                         variants={imageVariants}
                         className="relative w-full h-full min-h-150 lg:min-h-175 rounded-xl overflow-hidden shadow-2xl"
                     >
-                        <motion.div
-                            whileHover="hover"
-                            variants={imageVariants}
-                            className="absolute inset-0 w-full h-full"
-                        >
-                            <ExportedImage
-                                src="/images/about/hero/evgeniya-garankina-vizazhist-stilist-brovist-moskva-o-sebe-01.jpg"
-                                alt="Евгения Гаранкина — визажист, бровист и мастер причесок в Москве | Фото из портфолио для раздела о себе"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                        </motion.div>
+                        <ExportedImage
+                            src="/images/about/hero/evgeniya-garankina-vizazhist-stilist-brovist-moskva-o-sebe-01.jpg"
+                            alt="Евгения Гаранкина — визажист, бровист и мастер причесок в Москве | Фото из портфолио для раздела о себе"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                     </motion.div>
                     <motion.div
                         variants={containerVariants}
@@ -73,9 +76,9 @@ const AboutPage = () => {
                     >
                         <motion.h1
                             variants={headerVariants}
-                            className="text-4xl md:text-3xl lg:text-5xl font-bold mb-4"
+                            className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4"
                         >
-                            <span className="text-[#947360]">
+                            <span className="text-primary">
                                 Привет, меня зовут Женя
                             </span>
                         </motion.h1>
@@ -156,25 +159,43 @@ const AboutPage = () => {
                                     клипах и рекламе.
                                 </p>
                             </motion.div>
+                            <motion.div
+                                variants={textVariants}
+                                className="flex justify-center items-center w-full"
+                            >
+                                <Link
+                                    href="https://t.me/galochkajohnnyy"
+                                    onClick={e =>
+                                        handleClick(
+                                            e,
+                                            'https://t.me/galochkajohnnyy'
+                                        )
+                                    }
+                                    className="bg-primary relative text-black px-6 py-2 rounded-full font-semibold hover:bg-primary-dark transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2"
+                                >
+                                    <ExportedImage
+                                        src="/images/icons/telegram.png"
+                                        alt="Ссылка на телеграм канал стилиста"
+                                        width={32}
+                                        height={32}
+                                        className="object-contain"
+                                    />
+                                    <span>Подписаться</span>
+                                </Link>
+                            </motion.div>
                         </motion.div>
                     </motion.div>
                     <motion.div
                         variants={imageVariants}
-                        className="relative w-full h-full min-h-[500px] lg:min-h-[600px] rounded-xl overflow-hidden shadow-2xl order-1 lg:order-2"
+                        className="relative w-full h-full min-h-125 lg:min-h-150 rounded-xl overflow-hidden shadow-2xl order-1 lg:order-2"
                     >
-                        <motion.div
-                            whileHover="hover"
-                            variants={imageVariants}
-                            className="absolute inset-0 w-full h-full"
-                        >
-                            <ExportedImage
-                                src="/images/about/hero/evgeniya-garankina-vizazhist-stilist-brovist-moskva-o-sebe-02.jpg"
-                                alt="Евгения Гаранкина — визажист, бровист и мастер причесок в Москве | Фото из портфолио для раздела о себе"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                            />
-                        </motion.div>
+                        <ExportedImage
+                            src="/images/about/hero/evgeniya-garankina-vizazhist-stilist-brovist-moskva-o-sebe-02.jpg"
+                            alt="Евгения Гаранкина — визажист, бровист и мастер причесок в Москве | Фото из портфолио для раздела о себе"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                     </motion.div>
                 </motion.div>
                 <motion.section
