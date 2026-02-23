@@ -20,7 +20,7 @@ const Gallery: React.FC = () => {
 
     return (
         <motion.section
-            initial="hidden"
+            initial="visible"
             animate="visible"
             variants={containerVariants}
             className="bg-black min-h-screen"
