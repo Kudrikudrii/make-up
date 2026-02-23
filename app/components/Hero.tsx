@@ -2,55 +2,61 @@
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import ExportedImage from 'next-image-export-optimizer'
+import ExportedImage from 'next-image-export-optimizer';
 
 export default function Hero() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
-    
+
     const { scrollYProgress } = useScroll({
         target: sectionRef,
-        offset: ["start start", "end start"]
+        offset: ['start start', 'end start'],
     });
 
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
     const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 4]);
-    const brightness = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
+    const brightness = useTransform(
+        scrollYProgress,
+        [0, 0.5, 1],
+        [1, 0.8, 0.6]
+    );
 
     return (
-        <section 
-            ref={sectionRef} 
+        <section
+            ref={sectionRef}
             className="relative h-screen flex items-end pb-20 overflow-hidden"
         >
-            <motion.div 
+            <motion.div
                 className="absolute inset-0 z-0"
                 style={{ y }}
                 initial={{ scale: 1.2, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                transition={{ duration: 1.2, ease: 'easeOut' }}
             >
-                <motion.div 
+                <motion.div
                     className="relative w-full h-full"
-                    style={{ 
+                    style={{
                         filter: `blur(${blur}px) brightness(${brightness})`,
                     }}
                 >
                     <ExportedImage
-                        src='/images/hero/evgeniya-garankina-stilist-po-volosam-i-makiyazhu-moskva-1.JPG'
-                        alt='Евгения Гаранкина — визажист, бровист и мастер причесок в Москве | Профессиональный портрет стилиста'
+                        src="/images/hero/evgeniya-garankina-stilist-po-volosam-i-makiyazhu-moskva-1.JPG"
+                        alt="Евгения Гаранкина — визажист, бровист и мастер причесок в Москве | Профессиональный портрет стилиста"
                         fill
                         className="object-cover"
                     />
                 </motion.div>
-                <motion.div 
+                <motion.div
                     className="absolute inset-0"
-                    style={{ 
+                    style={{
                         background: useTransform(
                             scrollYProgress,
                             [0, 1],
-                            ['linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6))',
-                             'linear-gradient(to bottom, rgba(0,0,0,1.5), rgba(0,0,0,2))']
-                        )
+                            [
+                                'linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6))',
+                                'linear-gradient(to bottom, rgba(0,0,0,1.5), rgba(0,0,0,2))',
+                            ]
+                        ),
                     }}
                 />
             </motion.div>
@@ -62,7 +68,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="max-w-4xl mx-auto text-center"
                 >
-                    <motion.h1 
+                    <motion.h1
                         className="text-3xl sm:text-1xl  md:text-6xl lg:text-7xl font-bold text-white mb-6"
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -70,15 +76,16 @@ export default function Hero() {
                     >
                         <strong>Евгения Гаранкина</strong>
                     </motion.h1>
-                    
-                    <motion.p 
+
+                    <motion.p
                         className="text-md md:text-2xl text-white mb-0 max-w-2xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.7 }}
                     >
-                        Проводник в сфере красоты.
-Не создаю новые лица, а показываю женщине ее саму, только в более уверенной версии, честно, с любовью и поддержкой.
+                        Проводник в сфере красоты. Не создаю новые лица, а
+                        показываю женщине ее саму, только в более уверенной
+                        версии, честно, с любовью и поддержкой.
                     </motion.p>
                 </motion.div>
             </div>

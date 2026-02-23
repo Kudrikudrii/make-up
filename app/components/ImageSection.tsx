@@ -1,12 +1,11 @@
 'use client';
 
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import ExportedImage from 'next-image-export-optimizer'
 
 export default function ImageSection() {
     const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
     
     const { scrollYProgress } = useScroll({
         target: sectionRef,

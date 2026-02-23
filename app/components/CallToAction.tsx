@@ -45,7 +45,7 @@ export default function CallToAction() {
               Забронировать сеанс
             </a>
             <Link
-              href="#portfolio"
+              href="/portfolio"
               className="bg-[#A1AFA0] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#193C19] hover:text-white transition-all duration-300 transform hover:scale-105"
             >
               Портфолио

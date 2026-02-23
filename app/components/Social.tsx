@@ -24,12 +24,12 @@ export default function Social() {
         {
             icon: '/images/icons/whatsapp.png',
             name: 'WhatsApp',
-            link: 'https://vk.com/id18787195',
+            link: 'https://wa.me/79641374224',
         },
     ];
     
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
-        e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+        e.preventDefault();
         window.open(link, '_blank', 'noopener,noreferrer');
     };
 
