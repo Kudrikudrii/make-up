@@ -1,8 +1,5 @@
-import Hero from './components/Hero'
-import CallToAction from './components/CallToAction'
-import ImageSection from './components/ImageSection'
-import ScrollingText from './components/ScrollingText'
 import type { Metadata } from 'next'
+import Slider from './components/Slider'
 
 
 export const metadata: Metadata = {
@@ -25,10 +22,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Hero />
-      <CallToAction />
-      <ImageSection />
-      <ScrollingText />
-    </>
+      <Slider />    </>
   )
 }

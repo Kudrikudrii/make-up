@@ -2,31 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import ExportedImage from 'next-image-export-optimizer'
+import ExportedImage from 'next-image-export-optimizer';
+import { SOCIAL_LINKS, type SocialLink } from '../utils/constants/social';
 
 export default function Social() {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
-
-    const socialLinks = [
-        {
-            icon: '/images/icons/telegram.png',
-            name: 'Telegram',
-            link: 'https://t.me/GalochkaJohnny',
-        },
-        {
-            icon: '/images/icons/vk.png',
-            name: 'VK',
-            link: 'https://vk.com/id18787195',
-        },
-        {
-            icon: '/images/icons/whatsapp.png',
-            name: 'WhatsApp',
-            link: 'https://wa.me/79641374224',
-        },
-    ];
     
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
         e.preventDefault();
@@ -34,10 +17,10 @@ export default function Social() {
     };
 
     return (
-        <section id="contact" className="py-4 md:py-8 bg-white">
+        <section id="contact" className="py-2 md:py-4 bg-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-6">
-                    <h2 className="text-2xl md:text-5xl font-bold text-black">
+                    <h2 className="text-xl md:text-3xl font-bold text-black">
                         <strong>СВЯЗАТЬСЯ СО МНОЙ</strong>
                     </h2>
                 </div>
@@ -49,21 +32,21 @@ export default function Social() {
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.5 }}
                 >
-                    {socialLinks.map((social, index) => (
+                    {SOCIAL_LINKS.map((item: SocialLink, index: number) => (
                         <motion.a
                             key={index}
-                            href={social.link}
-                            onClick={(e) => handleClick(e, social.link)}
+                            href={item.link}
+                            onClick={(e) => handleClick(e, item.link)}
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0, scale: 0 }}
                             animate={inView ? { opacity: 1, scale: 1 } : {}}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className={`w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:scale-110 hover:text-white`}
+                            className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:scale-110 hover:text-white"
                         >
                             <ExportedImage
-                                src={social.icon}
-                                alt={social.name}
+                                src={item.icon}
+                                alt={item.name}
                                 fill
                                 sizes="64px"
                                 className="object-cover"

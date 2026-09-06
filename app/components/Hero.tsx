@@ -74,7 +74,7 @@ export default function Hero() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.5 }}
                     >
-                        <strong>Евгения Гаранкина</strong>
+                        Евгения Гаранкинапа
                     </motion.h1>
 
                     <motion.p

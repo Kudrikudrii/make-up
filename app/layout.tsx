@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import Navbar from './components/Navbar';
-import Social from './components/Social';
-import Footer from './components/Footer';
+// import Social from './components/Social';
+// import Footer from './components/Footer';
 import JsonLd from './components/JsonLd';
 import './globals.css';
+import { montserrat, cormorant, fehero } from './fonts';
 
 const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || 'https://make-up-six.vercel.app';
@@ -79,14 +80,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="ru" className="scroll-smooth">
+        <html lang="ru" className={`scroll-smooth ${montserrat.variable} ${cormorant.variable} ${fehero.variable}`}>
             <head>
             </head>
             <body className="font-sans antialiased">
                 <Navbar />
                 {children}
-                <Social />
-                <Footer />
+                {/* <Social />
+                <Footer /> */}
                 <JsonLd />
             </body>
         </html>

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
-
 @import "tailwindcss";
 
 @theme {
@@ -14,9 +12,6 @@
   --color-dominant: #970C10;
   --color-dominant-dark: #592923;
   --color-dominant-light: #E2C7C0;
-  
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Montserrat', sans-serif;
   
   --animate-scroll-left: scroll-left 30s linear infinite;
   --animate-fade-in: fade-in 0.5s ease-out;
@@ -52,17 +47,12 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-body);
+    font-family: var(--font-montserrat), system-ui, sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 600;
+    font-family: var(--font-fehero), Georgia, serif;
     line-height: 1.2;
-  }
-  
-  .heading {
-    font-family: var(--font-display);
   }
   
   button, input, textarea, select {
@@ -70,7 +60,6 @@
   }
   
   p, span {
-    font-family: var(--font-body);
     line-height: 1.6;
   }
 }

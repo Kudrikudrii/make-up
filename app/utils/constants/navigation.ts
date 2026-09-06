@@ -1,8 +1,8 @@
 export const NAV_LINKS = [
     {
-        href: '/about',
-        label: 'Обо мне',
-        ariaLabel: 'Узнать больше обо мне',
+        href: '/',
+        label: 'На главную',
+        ariaLabel: 'Вернуться на главную страницу',
     },
     {
         href: '/portfolio',
@@ -10,8 +10,8 @@ export const NAV_LINKS = [
         ariaLabel: 'Перейти к портфолио',
     },
     {
-        href: '/',
-        label: 'На главную',
-        ariaLabel: 'Вернуться на главную страницу',
+        href: '/about',
+        label: 'Обо мне',
+        ariaLabel: 'Узнать больше обо мне',
     },
 ] as const;
