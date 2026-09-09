@@ -1,7 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import Navbar from './components/Navbar';
-// import Social from './components/Social';
-// import Footer from './components/Footer';
 import JsonLd from './components/JsonLd';
 import './globals.css';
 import { montserrat, cormorant, fehero } from './fonts';
@@ -84,10 +81,7 @@ export default function RootLayout({
             <head>
             </head>
             <body className="font-sans antialiased">
-                <Navbar />
                 {children}
-                {/* <Social />
-                <Footer /> */}
                 <JsonLd />
             </body>
         </html>

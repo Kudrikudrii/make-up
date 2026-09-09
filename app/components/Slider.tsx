@@ -35,6 +35,7 @@ const Slider = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const controls = useAnimation();
+  const footerHintControls = useAnimation();
   const wheelTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const setIsAnimating = useCallback((value: boolean) => {
@@ -123,6 +124,23 @@ const Slider = () => {
     
     controls.start({ y: targetY });
   }, [activeIndex, slideHeight, isFooterRevealed, controls]);
+
+  // Анимация подсказки футера
+  useEffect(() => {
+    const showHint = activeIndex === slides.length - 1 && !isFooterRevealed;
+    footerHintControls.start({
+      opacity: showHint ? 1 : 0,
+      y: showHint ? 0 : 50
+    });
+  }, [activeIndex, isFooterRevealed, footerHintControls]);
+
+  // Инициализация подсказки при монтировании
+  useEffect(() => {
+    footerHintControls.start({
+      opacity: 0,
+      y: 50
+    });
+  }, [footerHintControls]);
 
   const changeSlide = useCallback((direction: 'next' | 'prev') => {
     if (isAnimatingRef.current) return;
@@ -310,11 +328,11 @@ const Slider = () => {
                         <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         animate={ { opacity: 1, y: 0 } }
-                        transition={{ duration: 2.5, delay: 0.3 }}
-                        className="absolute top-[5%] left-0 right-0 px-6 text-white text-center"
+                        transition={{ duration: 1.5, delay: 0.3 }}
+                        className="absolute top-[5%] left-0 right-0 text-center"
                     >
                         <motion.h1
-                            className="text-primary text-8xl sm:text-3xl md:text-4xl lg:text-9xl font-light tracking-wide "
+                            className="text-black text-8xl sm:text-3xl md:text-4xl lg:text-9xl font-light tracking-wide "
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 2.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
@@ -361,7 +379,7 @@ const Slider = () => {
                           initial={{ opacity: 0, y: 30 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 1.5, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                          className="absolute bottom-[7%] left-0 right-0 text-white text-center"
+                          className="absolute bottom-[7%] left-0 right-0 text-hero-title text-center"
                         >
                           <h1 className="text-7xl sm:text-2xl md:text-3xl lg:text-9xl font-light tracking-wide">
                             {slide.content.title}
@@ -407,36 +425,34 @@ const Slider = () => {
         </div>
 
         {/* Подсказка о футере на последнем слайде */}
-        {activeIndex === slides.length - 1 && !isFooterRevealed && (
-          <motion.div 
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-primary text-white/50 text-sm rounded-t-full"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            <div className="flex flex-col items-center mb-7 h-14 w-30 pt-2">
-              <svg 
-                className="size-8 mt-3 animate-bounce" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                />
-              </svg>
-              <p className="text-xl sm:text-xl md:text-2xl lg:text-6xl font-light tracking-wide">КОНТАКТЫ</p>
-            </div>
-          </motion.div>
-        )}
+        <motion.div 
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black text-white/50 text-sm rounded-t-full pointer-events-none"
+          initial={false}
+          animate={footerHintControls}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <div className="flex flex-col items-center mb-1 h-14 w-30 pt-2">
+            <svg 
+              className="size-8 animate-bounce" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+              />
+            </svg>
+            <p className="text-xl sm:text-xl md:text-2xl lg:text-6xl font-light tracking-wide">КОНТАКТЫ</p>
+          </div>
+        </motion.div>
       </div>
 
       {/* Футер с контактами */}
       <motion.footer 
-        className="fixed bottom-0 left-0 w-full bg-primary text-white z-10"
+        className="fixed bottom-0 left-0 w-full bg-black text-white z-10"
         style={{ height: FOOTER_HEIGHT }}
         initial={{ y: FOOTER_HEIGHT }}
         animate={{ 
@@ -464,7 +480,7 @@ const Slider = () => {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-3 transition-all hover:scale-110 group"
               >
-                <div className="w-20 h-20 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                <div className="w-20 h-20 rounded-full flex items-center justify-center bg-white transition-colors">
                   <ExportedImage 
                     src={social.icon} 
                     alt={social.name}

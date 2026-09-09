@@ -12,6 +12,8 @@
   --color-dominant: #970C10;
   --color-dominant-dark: #592923;
   --color-dominant-light: #E2C7C0;
+
+  --color-hero-title: #28292d;
   
   --animate-scroll-left: scroll-left 30s linear infinite;
   --animate-fade-in: fade-in 0.5s ease-out;
