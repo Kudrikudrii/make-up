@@ -4,7 +4,7 @@ import './globals.css';
 import { montserrat, cormorant, fehero } from './fonts';
 
 const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://make-up-six.vercel.app';
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://evgenia-garankina.ru';
 
 export const metadata: Metadata = {
     metadataBase: new URL(baseUrl),
